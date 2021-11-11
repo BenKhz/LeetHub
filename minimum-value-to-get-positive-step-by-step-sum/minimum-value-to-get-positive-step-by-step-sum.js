@@ -7,6 +7,5 @@ var minStartValue = function(nums) {
     const sum = nums.reduce((acc, num) => {
         if ( acc + num < maxLess ) { maxLess = acc + num }
         return acc + num })
-    if (maxLess < 1) { return Math.abs(maxLess) + 1}
-    else { return 1}
+    return maxLess < 1 ? Math.abs(maxLess) + 1 : 1;
 };
