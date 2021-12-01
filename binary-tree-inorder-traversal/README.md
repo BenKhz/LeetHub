@@ -1,3 +1,4 @@
+[Discussion Post (created on 1/11/2021 at 11:58)](https://leetcode.com/problems/binary-tree-inorder-traversal/discuss/1606671/Javascript-Recursion-64ms-1-line.)  
 <h2>94. Binary Tree Inorder Traversal</h2><h3>Easy</h3><hr><div><p>Given the <code>root</code> of a binary tree, return <em>the inorder traversal of its nodes' values</em>.</p>
 
 <p>&nbsp;</p>
