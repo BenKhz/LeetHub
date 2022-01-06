@@ -9,7 +9,7 @@ var wateringPlants = function(plants, capacity) {
     plants.forEach((plant, idx) => {
         stepCount++;
         waterLeft -= plant;
-        if(plants[idx+1] && waterLeft < plants[idx+1]) {
+        if(waterLeft < plants[idx+1]) {
             waterLeft = capacity;
             stepCount += (idx+1)*2;
         }
