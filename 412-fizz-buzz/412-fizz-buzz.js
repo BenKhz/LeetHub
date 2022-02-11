@@ -6,10 +6,12 @@ var fizzBuzz = function(n) {
     var count = 1;
     var result = [];
     while(count <= n){
+        var isFizz = !(count%3),
+            isBuzz = !(count%5)
         switch (true) {
-            case (!(count % 5) && !(count%3)) : result.push("FizzBuzz"); break;
-            case (!(count%5)): result.push("Buzz"); break;
-            case (!(count%3)): result.push("Fizz"); break;
+            case (isFizz && isBuzz) : result.push("FizzBuzz"); break;
+            case isBuzz: result.push("Buzz"); break;
+            case isFizz: result.push("Fizz"); break;
             default: result.push(`${count}`); break;
         }
         count++;
