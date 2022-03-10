@@ -4,11 +4,14 @@
  */
 var projectionArea = function(grid) {
   let res = 0;
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[0].length; j++) {
-      if (grid[i][j] > 0) res++;
+  for( i in grid ) {
+    // find xy area. add 1 for every occupied grid position
+    for (j in grid) {
+      if (grid[i][j] > 0) { res++; }
     }
+    // find xz area. by finding largest stack in each row
     res += Math.max(...grid[i]);
+    // find yz area. by finding largest stack in each col
     res += Math.max(...grid.map(r => r[i]));
   }
   return res;
