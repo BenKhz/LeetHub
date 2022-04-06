@@ -3,42 +3,38 @@
  * @return {number[][]}
  */
 var generateMatrix = function(n) {
-    
     const result = [...Array(n)].map(e => Array(n).fill(0))
-    let movesRemain = (n**2);
-    let [row, col] = [0, 0];
+    let rem = (n**2);
+    let [r, c] = [0, 0];
     const move = {
-        right: () => [row, ++col],
-        left: () => [row,--col],
-        down: () => [ ++row, col ],
-        up: () => [ --row, col],
+        r: () => [r, ++c],
+        l: () => [r,--c],
+        d: () => [ ++r, c ],
+        u: () => [ --r, c],
     }
-    const directions = ['right', 'down', 'left', 'up'];
-    let dirIdx = 0;
-    const isValidMove = (coordPair) => {
-        if(!result[coordPair[0]]) { 
+    const dir = ['r', 'd', 'l', 'u'];
+    let dIdx = 0;
+    const isValid = (pair) => {
+        if(!result[pair[0]]) { 
             return false; }
         else {
-            return result[coordPair[0]][coordPair[1]] === 0 ? true : false;
+            return result[pair[0]][pair[1]] === 0 ? true : false;
         }
     }
-    let pos = [row, col];
-    let attempt;
+    let pos = [r, c];
+    let tryPos;
     let count = 1;
-    while(movesRemain) {
-        // set current value
+    while(rem) {
         result[pos[0]][pos[1]] = count;
         count++;
-        movesRemain--;
-        // try a new position
-        attempt = move[directions[dirIdx]]();
-        // while attempt is not valid, revert and try new attempt.
-        while(!isValidMove(attempt) && movesRemain) {
-            [row, col] = pos;
-            dirIdx = dirIdx === directions.length-1 ? 0: dirIdx + 1;
-            attempt = move[directions[dirIdx]]();
+        rem--;
+        tryPos = move[dir[dIdx]]();
+        while(!isValid(tryPos) && rem) {
+            [r, c] = pos;
+            dIdx = dIdx === dir.length-1 ? 0: dIdx + 1;
+            tryPos = move[dir[dIdx]]();
         }
-        pos = attempt;
+        pos = tryPos;
     }
     return result;
 };
