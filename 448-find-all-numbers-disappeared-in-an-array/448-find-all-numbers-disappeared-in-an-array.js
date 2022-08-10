@@ -4,13 +4,13 @@
  */
 var findDisappearedNumbers = function(nums) {
     var length = nums.length;
+    var count = 1;
     var result = [];
-    while(length) {
-        if(!nums.includes(length)) {
-            console.log("found do something")
-            result.push(length)
+    while( count <=length) {
+        if(!nums.includes(count)) {
+            result.push(count)
         } 
-        length--;
+        count++;
     }
-    return result.sort()
+    return result
 };
